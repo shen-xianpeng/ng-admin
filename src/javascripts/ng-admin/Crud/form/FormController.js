@@ -86,7 +86,7 @@ define(function () {
             .createOne(this.view, object)
             .then(function (response) {
                 self.progression.done();
-                self.notification.log('Changes successfully saved.', {addnCls: 'humane-flatty-success'});
+                self.notification.log('创建成功', {addnCls: 'humane-flatty-success'});
                 self.$location.path('/edit/' + self.entity.name() + '/' + response.identifierValue);
             });
     };
@@ -107,7 +107,7 @@ define(function () {
             .updateOne(this.view, object)
             .then(function () {
                 self.progression.done();
-                self.notification.log('Changes successfully saved.', {addnCls: 'humane-flatty-success'});
+                self.notification.log('编辑成功', {addnCls: 'humane-flatty-success'});
             });
     };
 

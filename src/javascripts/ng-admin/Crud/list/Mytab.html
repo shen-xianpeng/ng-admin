@@ -1,0 +1,4 @@
+<tabset style='margin-top:3px;' ng-if='mytabCtrl.enabled'>
+    <tab ng-repeat="tabmine in mytabCtrl.tabs" heading="{{tabmine.title}}" active="tabmine.active" disabled="tabmine.disabled" ng-click='mytabCtrl.gototab(tabmine.cat)'>
+    </tab>
+</tabset>

@@ -1,9 +1,9 @@
 <ul class="quick-filters nav nav-pills" ng-if="quickFilterCtrl.quickFilters.length">
     <li>
-        <span>Filters:</span>
+        <span>筛选:</span>
     </li>
     <li ng-class="{active: !quickFilterCtrl.currentQuickFilter}">
-        <a ng-click="quickFilterCtrl.filter(null)">None</a>
+        <a ng-click="quickFilterCtrl.filter(null)">全部</a>
     </li>
     <li ng-repeat="label in quickFilterCtrl.quickFilters" ng-class="{active: quickFilterCtrl.currentQuickFilter === label}">
         <a ng-click="quickFilterCtrl.filter(label)">{{ label }}</a>

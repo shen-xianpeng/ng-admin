@@ -29,16 +29,17 @@ define(function (require) {
      *
      * @returns {promise} the entity config & the list of objects
      */
-    ListViewRepository.prototype.getAll = function (view, page, fillSimpleReference, query, sortField, sortDir, filters) {
+    ListViewRepository.prototype.getAll = function (view, page, fillSimpleReference, query, sortField, sortDir, filters, tab) {
         var rawEntries,
             entries,
             referencedValues,
             self = this;
 
         page = page || 1;
+        tab = tab || null;
         fillSimpleReference = typeof (fillSimpleReference) === 'undefined' ? true : fillSimpleReference;
 
-        return this.getRawValues(view, page, query, sortField, sortDir, filters)
+        return this.getRawValues(view, page, query, sortField, sortDir, filters, tab)
             .then(function (values) {
                 rawEntries = values;
 
@@ -74,7 +75,7 @@ define(function (require) {
      *
      * @returns {promise} the entity config & the list of objects
      */
-    ListViewRepository.prototype.getRawValues = function (listView, page, query, sortField, sortDir, filters) {
+    ListViewRepository.prototype.getRawValues = function (listView, page, query, sortField, sortDir, filters, tab) {
         page = (typeof (page) === 'undefined') ? 1 : parseInt(page, 10);
         filters = (typeof (filters) === 'undefined') ? {} : filters;
 
@@ -91,6 +92,7 @@ define(function (require) {
         for (fieldName in filters) {
             params[fieldName] = filters[fieldName];
         }
+        if (tab) params['tab'] = tab;
 
         if (interceptor) {
             this.Restangular.addResponseInterceptor(interceptor);

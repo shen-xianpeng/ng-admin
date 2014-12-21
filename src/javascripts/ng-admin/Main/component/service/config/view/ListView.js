@@ -83,6 +83,14 @@ define(function (require) {
         return this;
     };
 
+    /**xianpeng filter tab
+    */
+    ListView.prototype.addTab = function (params) {
+        this.tabs = params;
+
+        return this;
+    };
+
     /**
      *
      * @returns {Object}

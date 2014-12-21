@@ -1,17 +1,17 @@
 <div ng-if="!paginationCtrl.infinitePagination && hasPagination">
     <div class="grid-detail row pull-right">
     <span class="total">
-        <strong>{{ paginationCtrl.offsetBegin }}</strong> - <strong>{{ paginationCtrl.offsetEnd }}</strong> on <strong>{{ paginationCtrl.totalItems }}</strong>
+        总共{{ paginationCtrl.totalItems }}条</strong>
     </span>
         <ul class="pagination pagination-sm">
             <li ng-class="{ disabled: paginationCtrl.currentPage == 1}">
-                <a href ng-click="paginationCtrl.setPage(paginationCtrl.currentPage - 1)">« Prev</a>
+                <a href ng-click="paginationCtrl.setPage(paginationCtrl.currentPage - 1)">« 上页</a>
             </li>
             <li ng-repeat="n in paginationCtrl.range(1, paginationCtrl.nbPages)" ng-class="{active: n == paginationCtrl.currentPage}" ng-click="paginationCtrl.setPage(n)">
                 <a href>{{ n }}</a>
             </li>
             <li ng-class="{disabled: paginationCtrl.currentPage == paginationCtrl.nbPages}">
-                <a href ng-click="paginationCtrl.setPage(paginationCtrl.currentPage + 1)">Next »</a>
+                <a href ng-click="paginationCtrl.setPage(paginationCtrl.currentPage + 1)">下页 »</a>
             </li>
         </ul>
     </div>

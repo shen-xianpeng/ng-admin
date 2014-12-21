@@ -14,7 +14,7 @@ define(function (require) {
         $stateProvider
             .state('list', {
                 parent: 'main',
-                url: '/list/:entity?q&page&sortField&sortDir&quickFilter',
+                url: '/list/:entity?q&page&sortField&sortDir&quickFilter&tab',
                 params: {
                     entity: null,
                     q: null,
@@ -32,6 +32,7 @@ define(function (require) {
                             listView = config.getViewByEntityAndType($stateParams.entity, 'ListView'),
                             page = $stateParams.page,
                             query = $stateParams.q,
+			    tab = $stateParams.tab,
                             sortField = $stateParams.sortField,
                             sortDir = $stateParams.sortDir,
                             quickFilter = $stateParams.quickFilter,
@@ -45,7 +46,7 @@ define(function (require) {
                             filters = listView.getQuickFilterParams(quickFilter);
                         }
 
-                        return ListViewRepository.getAll(listView, page, true, query, sortField, sortDir, filters);
+                        return ListViewRepository.getAll(listView, page, true, query, sortField, sortDir, filters, tab);
                     }]
                 }
             });

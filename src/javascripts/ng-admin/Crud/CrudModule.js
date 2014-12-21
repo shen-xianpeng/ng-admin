@@ -40,6 +40,7 @@ define(function (require) {
     CrudModule.directive('datagrid', require('ng-admin/Crud/list/Datagrid'));
     CrudModule.directive('datagridPagination', require('ng-admin/Crud/list/DatagridPagination'));
     CrudModule.directive('quickFilter', require('ng-admin/Crud/list/QuickFilter'));
+    CrudModule.directive('mytab', require('ng-admin/Crud/list/Mytab'));
 
     CrudModule.directive('stringColumn', require('ng-admin/Crud/column/StringColumn'));
     CrudModule.directive('passwordColumn', require('ng-admin/Crud/column/PasswordColumn'));
