@@ -84,11 +84,16 @@ define(function () {
 
         this.FormViewRepository
             .createOne(this.view, object)
-            .then(function (response) {
-                self.progression.done();
-                self.notification.log('创建成功', {addnCls: 'humane-flatty-success'});
-                self.$location.path('/edit/' + self.entity.name() + '/' + response.identifierValue);
-            });
+                .then(function (response) {
+                    window.response = response;
+                    self.progression.done();
+                    if (response.values.success!=false){
+                        self.notification.log('创建成功', {addnCls: 'humane-flatty-success'});
+                        self.$location.path('/edit/' + self.entity.name() + '/' + response.identifierValue);
+                    }else{
+                        self.notification.log(response.values.message||'服务器异常', {addnCls: 'humane-flatty-error'});
+                    }
+                });
     };
 
     /**
@@ -105,9 +110,14 @@ define(function () {
 
         this.FormViewRepository
             .updateOne(this.view, object)
-            .then(function () {
-                self.progression.done();
-                self.notification.log('编辑成功', {addnCls: 'humane-flatty-success'});
+                .then(function (response) {
+                    window.response = response;
+                    self.progression.done();
+                    if (response.values.success!=false){
+                        self.notification.log('编辑成功', {addnCls: 'humane-flatty-success'});
+                    }else{
+                        self.notification.log(response.values.message||'服务器异常', {addnCls: 'humane-flatty-error'});
+                 }
             });
     };
 
